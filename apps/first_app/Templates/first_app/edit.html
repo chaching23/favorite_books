@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .header{
+            border-bottom: 5px solid black;    
+        }
+        .header h1{
+            display:inline-block;
+            margin-right:400px;
+    
+        }
+        .header a{
+            display:inline-block;
+        }
+        </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Success!!!! Welcome, {{ user.first_name}}  {{user.last_name  }}</h1>
+        <a href="/"><button>Logout</button></a>
+    </div>
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+
+        <form action="/update/{{show.id}}" method="POST">
+            {% csrf_token %}
+        <br><br>
+            <input name="title" type="text" value="{{ show.title}} ">
+        <br>
+        
+            <p>Added by: {{ show.first_name  }}</p>
+        <br>
+            <p>Added on: {{show.created_at   }}</p>
+        <br>
+            <p>Last Updated: {{ show.updated_at  }}</p>
+        <br>
+       
+        
+            <h3>Description:</h3>
+            <input name="description" type="text" value="{{ show.description }}">
+        <br>
+        <br>
+            <button type="submit">Update</button>
+
+        </form>
+        <a href="/show/{{show.id}}/delete"><button>Delete</button></a>
+
+
+</body>
+</html>

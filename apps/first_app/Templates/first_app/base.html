@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .a{
+        display:inline-block;
+        margin:50px;
+        }
+    .b{
+        display:inline-block;
+        margin:50px;
+    }
+    .header{
+        border-bottom: 5px solid black;    
+    }
+    .header h1{
+        display:inline-block;
+        margin-right:400px;
+
+    }
+    .header a{
+        display:inline-block;
+    }
+
+        </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Success!!!! Welcome, {{ user.first_name}}  {{user.last_name  }}</h1>
+        <a href="/"><button>Logout</button></a>
+    </div>
+    <div class="a">
+        
+
+        <h1>Add a Favorite Book</h1>
+        
+        <form action="/add" method="POST">
+            {% csrf_token %}
+            <h3>Title:</h3>
+            <input name="title" type="text">
+        <br>
+            <h3>Description:</h3>
+            <input name="description" type="text">
+        <br>
+        <br>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div class="b">
+        <h1>All Books</h1>
+
+        {% for x in all_books %}
+            <a href="/show/{{x.id}}">{{ x.title }}</a> 
+            <p>{{ x.description }}</p> 
+            <p>Add to favorites</p>
+        {% endfor %}
+      
+    </div>
+</body>
+</html>

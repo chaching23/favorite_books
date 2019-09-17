@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .header{
+        border-bottom: 5px solid black;    
+    }
+    .header h1{
+        display:inline-block;
+        margin-right:400px;
+
+    }
+    .header a{
+        display:inline-block;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Success!!!! Welcome, {{ user.first_name}}  {{user.last_name  }}</h1>
+        <a href="/"><button>Logout</button></a>
+    </div>
+
+    <h1>TV Show {{ show.id}} </h1>
+    <a href="/">Go Back</a>
+    
+    <p>Title: {{ show.title }}</p>
+    <p>Network: {{ show.network }}</p>
+    <p>Release Date: {{ show.release_date }}</p>
+    <p>Description: {{ show.description  }}</p>
+
+    <p>Last Updated: {{ show.updated_at  }}</p>
+    <a href="/show/{{show.id}}/edit">Edit</a>|
+    <a href="/show/{{show.id}}/delete">Delete</a>
+           
+</body>
+</html>
